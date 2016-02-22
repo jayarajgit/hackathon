@@ -20,6 +20,7 @@
 	<link href="assets/css/widgets.min.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/rtl.min.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/themes.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/custom.css" rel="stylesheet" type="text/css">
 
 	<!--[if lt IE 9]>
 		<script src="assets/javascripts/ie.min.js"></script>
@@ -42,7 +43,7 @@
 -->
 <body class="theme-default main-menu-animated">
 
-<script>var init = [];</script>
+<script type="text/javascript">var init = [];</script>
 <!-- Demo script --> <script src="assets/demo/demo.js"></script> <!-- / Demo script -->
 
 <div id="main-wrapper">
@@ -483,11 +484,54 @@
 						
 						<!-- "Create project" button, width=auto on desktops -->
 						<div class="pull-right col-xs-12 col-sm-auto">
-							<a href="#" class="btn btn-primary btn-labeled" style="width: 100%;"><span class="btn-label icon fa fa-plus"></span>Upload Document</a>
+							<a href="#" class="thumbnail btn btn-primary btn-labeled" style="width: 100%;"><span class="btn-label icon fa fa-plus"></span>Upload Document</a>
 						</div>
-						
 												<!-- Margin -->
 						<div class="visible-xs clearfix form-group-margin"></div>
+						
+						
+						
+						
+							<!-- Start Modal Box -->
+						<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">×</button>
+										<h3 class="modal-title">Upload</h3>
+									</div>
+									<div class="modal-body"></div>
+									<div class="modal-footer">
+									<button class="btn btn-default">Submit</button>
+										<button class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+
+										<div id="upload-form" class="form-group" style="display: none">
+											<input type="file" name="img[]" class="file">
+											<div class="input-group col-xs-12">
+												<span class="input-group-addon"><i
+													class="glyphicon glyphicon-picture"></i></span> <input type="text"
+													class="form-control input-lg" disabled
+													placeholder="Upload Image"> <span
+													class="input-group-btn">
+													<button id="upload-btn"
+														class="browse btn btn-primary input-lg" type="button">
+														<i class="glyphicon glyphicon-search"></i> Browse
+													</button>
+												</span>
+											</div>
+											<div class="input-group col-xs-12">
+												<label for="comment">Comment:</label>
+												<textarea class="form-control" rows="5" id="comment"></textarea>
+											</div>
+
+										</div>
+									</div>
+							</div>
+						</div>
+							
+							<!-- End Modal Box -->
+						
 						
 												<!-- "Create project" button, width=auto on desktops -->
 						<div class="pull-right col-xs-12 col-sm-auto">
@@ -515,42 +559,26 @@
 				</div>
 			</div>
 			 -->
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Name</th>
-						<th>Modified Date</th>
-						<th>Modified By</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Folder1</td>
-						<td>August 07, 2014</td>
-						<td>Kumaravelan, Subramanian</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>Larry</td>
-						<td>the Bird</td>
-						<td>@twitter</td>
-				  </tr>
-				</tbody>
+			
+			<table id="tblDocs" class="table table-bordered">
+				
 			</table>
-			<div class="table-footer">
-				Footer
-			</div>
+			
+			<!-- 
+				<div class="table-footer">
+					Footer
+				</div>
+			-->
 		</div>
 		<!-- / Primary table -->
-
+		
+		<div id="divContent">
+			sdgjasg a;sjgfd9a4jas asdflgkapsofgi ,masfg npoasfgi34masgfd asfg Kumar sdgjasg a;sjgfd9a4jas asdflgkapsofgi ,masfg npoasfgi34masgfd asfg Kumar
+			sdgjasg a;sjgfd9a4jas asdflgkapsofgi ,masfg npoasfgi34masgfd asfg Kumar sdgjasg a;sjgfd9a4jas asdflgkapsofgi ,masfg npoasfgi34masgfd asfg Kumar
+			sdgjasg a;sjgfd9a4jas asdflgkapsofgi ,masfg npoasfgi34masgfd asfg Kumar sdgjasg a;sjgfd9a4jas asdflgkapsofgi ,masfg npoasfgi34masgfd asfg Kumar
+			sdgjasg a;sjgfd9a4jas asdflgkapsofgi ,masfg npoasfgi34masgfd asfg Kumar sdgjasg a;sjgfd9a4jas asdflgkapsofgi ,masfg npoasfgi34masgfd asfg Kumar
+			
+		</div>
 
 		</div>
 	</div> <!-- / #content-wrapper -->
@@ -567,42 +595,80 @@
 
 
 <!-- Pixel Admin's javascripts -->
+
+<script src="assets/javascripts/jquery.dataTables.min.js"></script>
 <script src="assets/javascripts/bootstrap.min.js"></script>
+<script src="assets/javascripts/bootstrap-table.js"></script>
 <script src="assets/javascripts/pixel-admin.min.js"></script>
+<script src="assets/javascripts/custom.js"></script>
+
+<script src="assets/javascripts/hilitor.js"></script>
 
 <script type="text/javascript">
 	init.push(function () {
 		// Javascript code here
-	})
+	});
 	window.PixelAdmin.start(init);
 	
-	var fileList = {
-		    "documentList": {
-		        "fileNum": 3,
-		        "start": 0,
-		        "maxScore": 0.010570898,
-		        "docs": [{
-				            "id": "1.ppt",
-				            "last_modified": "2015-04-01T14:39:58Z",
-				            "last_modified_by": "NameModifier",
-						   "created_on": "2015-04-01T14:39:58Z",
-						   "version": "1.2.3"},
-					   {
-					            "id": "2.ppt",
-					            "last_modified": "2015-04-01T14:39:58Z",
-					            "last_modified_by": "NameModifier",
-					   "created_on": "2015-04-01T14:39:58Z",
-					   "version": "1.2.3"},
-					   {
-					            "id": "3.ppt",
-					            "last_modified": "2015-04-01T14:39:58Z",
-					            "last_modified_by": "NameModifier",
-					   "created_on": "2015-04-01T14:39:58Z",
-					   "version": "1.2.3"}
-		  				]
+	function getDocs(){
+		/*
+		$.ajax({
+			url : "getDocs.jsp",
+			type:"get",
+			dataType : "json",
+			success : function(result){
+				alert(result);
+			},
+			error:function(e){
+				
 			}
-		};
-
+		});
+		*/
+		
+		$('#tblDocs').bootstrapTable({
+		    url: 'getDocs.jsp?d='+new Date().getTime(),
+		    pagination : true,
+		    sortName : ["name","modified_by"],
+		    columns: [
+				{
+				      "field": "id",
+				      "title": "sno"
+				   },
+				   {
+				      "field": "name",
+				      "title": "Name"
+				   },
+				   {
+				      "field": "last_modified",
+				      "title": "Modified Date"
+				   },
+				   {
+				      "field": "last_modified_by",
+				      "title": "Modified By"
+				   },
+				   {
+				      "field": "created_on",
+				      "title": "Created By"
+				   },
+				   {
+				      "field": "version",
+				      "title": "Version"
+				   }
+				]
+		});
+		
+	}
+	
+	  
+	$(document).ready(function(){
+		getDocs();
+		
+	   
+	    
+	    var myHilitor = new Hilitor("divContent");
+		myHilitor.apply("Kumar");
+		  
+	});
 	
 </script>
 
